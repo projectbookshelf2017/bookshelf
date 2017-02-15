@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+    <head>
+        <title> Upload </title>
+        <link rel="stylesheet" type="text/css" href="upload.css" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+        <script type="text/javascript">
+         $(document).ready(function() {
+            //write your scripts here
+             $(document).on("submit", "#upload", function(e) {
+                        alert("Upload Successful");
+                    
+                 
+                });
+         });
+        </script>
+    </head>
+    <body>           
+            
+            <div id="content">
+                <div class="im">
+              <img src="pb.jpg" width="150px" height="50px">
+            </div>
+                
+                <div id="main">
+                <form id="upload" action="userpro.html">
+                    <table>
+                        <tr>
+                            <td>FILE NAME</td>
+                        </tr> 
+                        <tr>
+                            <td> <input class="textbox" type="text" name="bname"  required></td>
+                        </tr>
+                        <tr>
+                            <td>CHOOSE FILE</td>
+                        </tr>
+                        <tr>
+                            <td><input id="cfile"  type="file" required></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>PRICE</td>
+                        </tr> 
+                        <tr>
+                            <td><input class="textbox" type="number" name="srate" min="1" max="150"  required></td>
+                        </tr>
+                        <tr>
+                            <td><input id="bt" type="submit" value="Submit" /></td>
+                        </tr>
+                    </table>
+               </form>
+
+                  
+                     
+                </div>
+            </div>
+            
+            
+            
+        </div>
+    </body>
+</html>

@@ -1,0 +1,126 @@
+body {
+    background-image: url(b5.jpg);
+    background-size: 1367px 660px;
+
+}
+.im img{
+    position: relative;
+    left: 55px;
+    border-style: solid;
+    border-width: 3px;
+}
+#main {
+    text-align: center;
+    font-size: 20px;
+    font-family: inherit;
+    position: relative;
+    width: 700px;
+    height: 400px;
+    left: 25px;
+    top: 50px;
+    
+}
+
+
+#us{
+    position: relative;
+    
+    font-family: inherit;
+    color: white;
+    font-size: 40px;
+    right: 255px;
+    bottom: 35px;
+
+}
+
+.acc a{
+    
+    font-size: 25px;
+    
+    position: relative;
+    left: 890px;
+    bottom: 93px;
+    color: white;
+    text-decoration: none;
+}
+#bt{
+    font-size: 20px;
+    font-family: inherit;
+    width: 300px;
+    height: 35px;
+    background-color: white;
+    position: relative;
+    left: 30px;
+    top: 80px;
+}
+input[type=text] {
+    width: 305px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    position: relative;
+    right: 166px;
+    top: 10px;
+}
+
+#text{
+    color: white;
+    font-family: inherit;
+    font-size: 20px;
+    position: relative;
+    right: 165px;
+    top: 70px;
+}
+#txt{
+     color: white;
+    font-family: inherit;
+    font-size: 20px;
+    position: relative;
+    right: 273px;
+}
+.dropbtn {
+    background-color: black;
+    color: white;
+    padding: 15px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: black;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    left: 840px;
+    bottom: 105px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 135px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 5px 5px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #f1f1f1}
+
+.show {display:block;}

@@ -1,0 +1,47 @@
+body {
+    background-image: url(b5.jpg);
+    background-size: 1367px 660px; 
+}
+.im img{
+    position: relative;
+    left: 23px;
+    border-style: solid;
+    border-width: 3px;
+}
+
+
+#main {
+    text-align: left;
+    font-size: 32px;
+    color: white;
+    width: 330px;
+    height: 310px;
+    position: relative;
+    font-family: inherit;
+    top: 50px;
+    left: 23px;
+    
+}
+
+.textbox{
+    font-size: 30px;
+    width: 248px;
+    height: 30px;
+    
+    
+}
+
+
+#bt{
+    font-size: 25px;
+    font-family: inherit;
+    width: 252px;
+    height: 35px;
+    background-color: white;
+}
+#cfile{
+    width: 250px;
+    height: 32px;
+    font-size: 15px;
+}
+

@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <title>user profile</title>
+        <link rel="stylesheet" type="text/css" href="userpro.css"/> 
+        <script>
+            document.getElementById("uploadBtn").onchange = function () {
+    document.getElementById("uploadFile").value = this.value;
+};
+        </script>
+        <script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+    </head>
+    <body>
+            
+             <div id="content">
+                
+                <div class="im">
+                    <img src="pb.jpg" width="150px" height="50px">
+                </div>
+                <div id="main">
+                    // drop down
+                    
+                    <div class="dropdown">
+                        <button onclick="myFunction()" class="dropbtn">My Account</button>
+                        <div id="myDropdown" class="dropdown-content">
+                            <a href="#about">My Notes</a>
+                            <a href="home1.html">Logout</a>
+                        </div>
+                    </div>
+                     
+                 
+                <div id="us"> Hi User </div>
+                    
+                    <div id="txt">
+                        Find notes
+                    </div>
+                    
+                    <div id="search">
+                        
+                        <form>
+                            <input type="text" name="search" placeholder="Search..">
+                        </form>
+                    </div>
+                    <!-- <div class="vertical-line" /> -->
+
+                    <div id="text"> Upload your Hand-written notes here! </div>
+                        
+                      <form id="sef" action="upload.html">
+                            <table>
+                                <!-- <tr><td><input  type="file" ></td></tr> -->
+                                <tr><td><input id="bt" type="submit" value="Upload" /></td></tr>
+                            </table>
+                        </form>
+                    
+                </div>
+            </div>
+        
+    </body>
+</html>
