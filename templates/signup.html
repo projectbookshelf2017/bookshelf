@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>signup</title>
-        <link rel="stylesheet" type="text/css" href="signup.css" />
+        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="signup.css") }} />
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
         <script type="text/javascript">
          $(document).ready(function() {
@@ -46,12 +46,12 @@
         
         
         <div class="im">
-              <img src="pb.jpg" width="150px" height="50px">
+              <img src={{ url_for('static', filename="pb.jpg") }} width="150px" height="50px">
             </div>
         
         <div id="main">    
         
-            <form id="signup" action="home1.html" method="GET">
+            <form id="signup" method="POST">
             <table>
                 <tr>
                     <td><input class="txtbox" placeholder="Name" type="text" name="name" required></td>

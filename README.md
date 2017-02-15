@@ -91,11 +91,11 @@ if __name__ == "__main__":
     app.run(debug=True)
 ```
 
-How to serve static files?
-==========================
+Using request
+=============
 
-1. import `send_from_directory` from flask
+1.
+```
+from flask import request
+```
 
-```
-from flask import send_from_directory
-```
