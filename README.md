@@ -99,3 +99,47 @@ Using request
 from flask import request
 ```
 
+
+
+Database - Flask-SQLAlchemy
+==========================
+
+1. Install
+
+```
+pip install flask_sqlalchemy
+```
+
+2. assign URI for the db file
+
+```
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///datastore.db'    # /// is for relative path
+```
+3. Create classes for each table. example:
+
+```
+# Table-1: User table template
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(254), unique=True)    # also serves as username
+    name = db.Column(db.String(100))
+    department = db.Column(db.String(100))
+    password = db.Column(db.String(50))
+
+    def __init__(self, email, password, name, department):
+        self.email = email
+        self.password = password
+        self.name = name
+        self.department = department
+
+    def __repr__(self):
+        return '<User %r>' % self.email
+```
+
+3. Create
+
+Login Manager
+=============
+
+1. `pip install flask-login`
+2.

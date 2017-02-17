@@ -45,7 +45,7 @@ window.onclick = function(event) {
                         <button onclick="myFunction()" class="dropbtn">My Account</button>
                         <div id="myDropdown" class="dropdown-content">
                             <a href="#about">My Notes</a>
-                            <a href="home1.html">Logout</a>
+                            <a href={{ url_for("signout") }} >Logout</a>
                         </div>
                     </div>
                      
