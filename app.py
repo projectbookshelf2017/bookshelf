@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for
 
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
 import os
 
 app = Flask(__name__)
@@ -13,53 +15,60 @@ app.config['SECRET_KEY'] = os.urandom(30)
 db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
+admin = Admin(app, name="bookshelf admin", template_mode="bootstrap3")
 
 ## For each table in the DB, create a seperate class
 
 # Table-1: User table template
-class User(UserMixin, db.Model):
+class Users(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(254), unique=True)    # also serves as username
     name = db.Column(db.String(100))
     department = db.Column(db.String(100))
     password = db.Column(db.String(50))
+    books = db.relationship('Books', backref='users', lazy='dynamic')
 
-    def __init__(self, email, password, name, department):
-        self.email = email
-        self.password = password
-        self.name = name
-        self.department = department
+    # def __init__(self, email, password, name, department):
+    #     self.email = email
+    #     self.password = password
+    #     self.name = name
+    #     self.department = department
+    #
 
     def __repr__(self):
         return '<User %r>' % self.email
 
-"""
 #Table-2: book details
-class Book(db.Model):
+class Books(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(254))
-    department = db.Column(db.String(100))
-    email = db.Column(db.String(254), unique=True)
+    # name = db.Column(db.String(254))
+    # department = db.Column(db.String(100))
+    # email = db.Column(db.String(254), unique=True)
     book_name = db.Column(db.String(254))
-    book_edition = db.Column(db.Integer(20))
+    book_edition = db.Column(db.Integer)
     author_name = db.Column(db.String(254))
-    price = db.Column(db.Integer(20))
+    price = db.Column(db.Integer)
 
-    def __init__(self, name, department, email, book_name, book_edition, author_name ):
-        self.name = name
-        self.department = department
-        self.email=email
-        self.book_name=book_name
-        self.book_edition=book_edition
-        self.author_name=author_name
-
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    #
+    # def __init__(self, book_name, book_edition, author_name ):
+    #     # self.name = name0
+    #     # self.department = department
+    #     # self.email=email
+    #     self.book_name=book_name
+    #     self.book_edition=book_edition
+    #     self.author_name=author_name
+    #
     def __repr__(self):
-        return '<User %r>' % self.email
-"""
+        return '<Books %r>' % self.book_name
+
+# Adding table views to admin panel
+admin.add_view(ModelView(Users, db.session))
+admin.add_view(ModelView(Books, db.session))
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(int(user_id))
+    return Users.query.get(int(user_id))
 
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -69,7 +78,7 @@ def home():
         password = form["psw"]
         # check if email and corresponding password exists in the database
         # If yes
-        user = User.query.filter_by(email=email).filter_by(password=password).first()
+        user = Users.query.filter_by(email=email).filter_by(password=password).first()
         if user:
             login_user(user)
             return redirect("/profile")
@@ -103,7 +112,7 @@ def signup():
         # conpassword = form["pwd2"]    # prevalidated in front-end
 
         # Add new user info to DB
-        new_user = User(name=name, email=email, department=department, password=password)    # create a User table record (row)
+        new_user = Users(name=name, email=email, department=department, password=password)    # create a Users table record (row)
         db.session.add(new_user)
         db.session.commit()
 

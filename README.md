@@ -136,10 +136,35 @@ class User(db.Model):
         return '<User %r>' % self.email
 ```
 
-3. Create
+3. Create a new database:
+   a. open python command prompt
+   b. Create empty db file. do this every time you change Model/Table. !!!Deletes all info!!!
+      ```
+      >>> from app import db
+      >>> db.create_all()
+      ```
 
 Login Manager
 =============
 
 1. `pip install flask-login`
-2.
+2. create login manager instance
+```
+login_manager = LoginManager()
+login_manager.init_app(app)
+```
+3. A `UserMixin` class needs to be imported from flask_login. This is linked to our User table and it exposes
+methods like `is_authentiated`, `is_ananymous` etc which are needed to handle login
+
+This is a required code:
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+refer Flask-Login docs for more details
+
+4. Add a decorater `@login_required` to each of theroutes that needs to be protected
+
+5.

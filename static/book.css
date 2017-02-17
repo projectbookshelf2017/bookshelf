@@ -1,0 +1,42 @@
+body{
+    background-image: url(b5.jpg);
+    background-size: 1367px 660px; 
+}
+.im img{
+    position: relative;
+    left: 29px;
+    border-style: solid;
+    border-width: 3px;
+}
+#main{
+    
+    width: 330px;
+    height: 310px;
+    position: relative;
+    font-family: inherit;
+    top: 50px;
+    left: 23px;
+}
+#bt{
+    font-size: 20px;
+    font-family: inherit;
+    width: 323px;
+    height: 35px;
+    
+}
+.txtbox{
+    width: 300px;
+    height: 20px;
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: whitesmoke;
+    font-family: inherit;
+    font-size: 20px;
+}
+.txt{
+    color: white;
+    font-family: inherit;
+    font-size: 20px;
+}
+
+

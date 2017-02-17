@@ -1,7 +1,7 @@
 <!DOCTYPE html>
     <head>
         <title> Upload </title>
-        <link rel="stylesheet" type="text/css" href="upload.css" />
+        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="upload.css") }} />
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
         <script type="text/javascript">
          $(document).ready(function() {
@@ -18,7 +18,7 @@
             
             <div id="content">
                 <div class="im">
-              <img src="pb.jpg" width="150px" height="50px">
+              <img src={{ url_for('static', filename="pb.jpg") }} width="150px" height="50px">
             </div>
                 
                 <div id="main">

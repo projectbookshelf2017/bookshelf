@@ -4,15 +4,15 @@
         <!--<link rel="stylesheet" type="text/css" href="home.css" />-->
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='home.css') }} />
         <script language="javascript">
-            function check(form) { /*function to check userid & password*/
-                /*the following code checkes whether the entered userid and password are matching*/
-                if(form.email.value == "myid@rajalakshmi.edu.in" && form.psw.value == "mypsw") {
-                    window.location('userpro.html')/*opens the target page while Id & password matches*/
-                }
-                else {
-                    alert("Invalid Password or Username")/*displays error message*/
-                }
-            }
+            <!--function check(form) { /*function to check userid & password*/-->
+                <!--/*the following code checkes whether the entered userid and password are matching*/-->
+                <!--if(form.email.value == "myid@rajalakshmi.edu.in" && form.psw.value == "mypsw") {-->
+                    <!--window.location('userpro.html')/*opens the target page while Id & password matches*/-->
+                <!--}-->
+                <!--else {-->
+                    <!--alert("Invalid Password or Username")/*displays error message*/-->
+                <!--}-->
+            <!--}-->
         </script>
     </head>
         <body>
@@ -27,7 +27,7 @@
 
                         <input class="txtbox" type="password" placeholder="Password" name="psw" required><br>
 
-                        <button class="btn" type="submit" onclick="check(this.form)">Login</button><br>
+                        <button class="btn" type="submit">Login</button><br>
     
                     
                     </form>

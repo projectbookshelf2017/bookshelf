@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>signup</title>
-        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="signup.css") }} />
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+        <title>book</title>
+        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='book.css') }} />
+        <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
         <script type="text/javascript">
          $(document).ready(function() {
             //write your scripts here
@@ -20,22 +20,8 @@
                 });
          });
 
-        //    function Function1() {
-        //        console.log("I got into f1");
-//                var password = document.getElementById("pwd1").value;
-//                var confirmPassword = document.getElementById("pwd2").value;
-//                if (password != confirmPassword) {
-//                    alert("Passwords do not match.");
-//                    return false;
-//                } else {
-        //            console.log("I got executed");
-        //            url = "/home1.html";
-        //    //        document.location.href = "home1.html";
-        //            $(location).attr('href',url);
-        //            return true;
-        //        }
-        //    }
-        </script>
+
+        </script> -->
     </head>
 
 <body>
@@ -46,13 +32,16 @@
         
         
         <div class="im">
-              <img src={{ url_for('static', filename="pb.jpg") }} width="150px" height="50px">
+              <img src="pb.jpg" width="150px" height="50px">
             </div>
         
         <div id="main">    
         
-            <form id="signup" method="POST">
+            <form id="book" method="POST">
             <table>
+                <tr>
+                    <td class="txt">User Details</td>
+                </tr>    
                 <tr>
                     <td><input class="txtbox" placeholder="Name" type="text" name="name" required></td>
                 </tr>
@@ -61,12 +50,22 @@
                 <tr>
                 <td><input class="txtbox" placeholder="Email" type="email" name="email" required></td>
                 </tr> 
-                <tr>
-                    <td><input class="txtbox" placeholder="Password" type="password" id="pwd1" name="pwd1" required></td>
+                
+                <tr class="txt">
+                    <td>Book Details</td>
                 </tr>
                 <tr>
-                <td><input class="txtbox" placeholder="Confirm Password" type="password" id="pwd2" name="pwd2" required></td>
+                    <td><input class="txtbox" placeholder="Book Name" type="text" name="bname" required></td>
                 </tr>
+                <tr>
+                <td><input class="txtbox" placeholder="Book Edition" type="text" name="bedition" required></td>
+                </tr>
+                 <tr>
+                    <td><input class="txtbox" placeholder="Author Name" type="text" name="Aname" required></td>
+                </tr>
+                 <tr>
+                    <td><input class="txtbox" placeholder="Price" type="number" name="srate" min="1" max="150"  required></td>
+                 </tr>
                 <tr>
                     <td><input id="bt" type="submit" value="Submit" /></td>
                 </tr>
