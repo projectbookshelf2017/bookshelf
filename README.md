@@ -167,4 +167,23 @@ refer Flask-Login docs for more details
 
 4. Add a decorater `@login_required` to each of theroutes that needs to be protected
 
-5.
+
+Uploading files
+================
+
+1. Ref: http://code.runnable.com/UiPcaBXaxGNYAAAL/how-to-upload-a-file-to-the-server-in-flask-for-python
+2. Ref for dropbox: https://github.com/playpauseandstop/Flask-Dropbox
+
+Project GMail
+==============
+
+emailid: projectbookshelf2017@gmail.com
+password: G680y7%4
+
+Dropbox secrets
+===============
+
+app key: d7vcyguscijcpdw
+app secret: uvjjh2xkyz9qhbj
+
+temporary access token: A5RdmUqkkXAAAAAAAAAACvYfU28rObYWB_hs60GCleXmTVjc2lYMa1JnwKvXxnWV

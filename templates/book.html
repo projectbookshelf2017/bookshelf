@@ -32,25 +32,13 @@
         
         
         <div class="im">
-              <img src="pb.jpg" width="150px" height="50px">
+              <img src={{ url_for('static', filename="pb.jpg") }} width="150px" height="50px">
             </div>
         
         <div id="main">    
         
             <form id="book" method="POST">
             <table>
-                <tr>
-                    <td class="txt">User Details</td>
-                </tr>    
-                <tr>
-                    <td><input class="txtbox" placeholder="Name" type="text" name="name" required></td>
-                </tr>
-                    <td> <input class="txtbox" placeholder="Department" type="text" name="dpt" required></td>
-                </tr>
-                <tr>
-                <td><input class="txtbox" placeholder="Email" type="email" name="email" required></td>
-                </tr> 
-                
                 <tr class="txt">
                     <td>Book Details</td>
                 </tr>
