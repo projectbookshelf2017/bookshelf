@@ -228,5 +228,16 @@ Install PostGRES SQL on Heroku cloud
 
 1. Goto you heroku account, click on your app (bookshelf)
 2. Go to Resources, add-ons search for `Heroku Postgres`
-3. Create a hobby-dev database
-4. 
+3. Create a hobby-dev database or run `heroku addons:add heroku-postgresql:dev`
+4. secure shell into heroku and create empty database using the command
+    `heroku run bash`
+5. open a python console there using the command
+    `python`
+6. init an empty database
+    `from app import db`
+    `db.create_all()`
+7. In future if you want to reinitialize the database, you would have to drop/delete all the information in it using
+    `from app import db`
+    `db.drop_all()`
+    # recreate the database using
+    `db.create_all()`
