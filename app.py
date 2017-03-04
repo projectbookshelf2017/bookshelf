@@ -152,7 +152,7 @@ def upload():
         except dropbox.exceptions.ApiError as err:
             print('*** API error', err)
             return None
- 
+
         print(res)
         print(path)
         saved_path = res._path_lower_value
