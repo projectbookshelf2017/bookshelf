@@ -187,3 +187,46 @@ app key: d7vcyguscijcpdw
 app secret: uvjjh2xkyz9qhbj
 
 temporary access token: A5RdmUqkkXAAAAAAAAAACvYfU28rObYWB_hs60GCleXmTVjc2lYMa1JnwKvXxnWV
+
+Github
+======
+
+1. Add the remote location to your local git management
+
+```
+git remote add origin https://github.com/projectbookshelf2017/bookshelf.git
+```
+
+2. Push local code to remote location
+
+```
+git push -u origin master
+```
+
+3. You can also pull remote changes locally using the command
+
+```
+git pull origin master
+```
+
+Heroku
+======
+
+1. Create an account
+2. To understand how to host a python app (flask app) on heroku, follow this tutorial
+
+https://devcenter.heroku.com/articles/getting-started-with-python#introduction
+
+Changes from the above doc:
+1. `heroku apps:create appname`
+2. If deploy fails check if you have `Procfile` and `requirements.txt`
+3. to create requirements.txt use `pip freeze > requirements.txt`
+4. after freezing the requirements, add `gunicorn==19.6.0` to requirements.txt
+
+Install PostGRES SQL on Heroku cloud
+====================================
+
+1. Goto you heroku account, click on your app (bookshelf)
+2. Go to Resources, add-ons search for `Heroku Postgres`
+3. Create a hobby-dev database
+4. 

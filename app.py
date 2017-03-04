@@ -12,7 +12,7 @@ import datetime
 
 app = Flask(__name__)
 app.config['STATIC_FOLDER'] = 'static'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///datastore.db'    # /// is for relative path
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///datastore.db')    # /// is for relative path
 app.config['SECRET_KEY'] = os.urandom(30)
 
 # This is the path to the upload directory
@@ -156,7 +156,7 @@ def upload():
         print(res)
         print(path)
         saved_path = res._path_lower_value
-        content_hash = res._content_hash_value
+        content_hash = res._content_hash_value    # a hash represents the data in the file. This is useful to check if later the file downloaded from dropbox is corrupt/not
 
         # create a db entry
         note = Notes(title=title, original_filename=file.filename, dropbox_path=saved_path,
