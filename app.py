@@ -8,11 +8,14 @@ import dropbox
 import os
 import uuid
 import datetime
-# from werkzeug import secure_filename
+from whoosh.analysis import StemmingAnalyzer
+import flask_whooshalchemy
+import json
 
 app = Flask(__name__)
 app.config['STATIC_FOLDER'] = 'static'
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///datastore.db')    # /// is for relative path
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SECRET_KEY'] = os.urandom(30)
 
 # This is the path to the upload directory
@@ -37,6 +40,11 @@ admin = Admin(app, name="bookshelf admin", template_mode="bootstrap3")
 # dropbox = Dropbox(app)
 # dropbox.register_blueprint(url_prefix='/dropbox')
 
+# Whoosh search
+# basedir = os.path.dirname(os.path.abspath(__name__))
+# WHOOSH_BASE = os.path.join(basedir, 'search.db')
+
+
 ## For each table in the DB, create a seperate class
 
 # Table-1: User table template
@@ -54,6 +62,7 @@ class Users(UserMixin, db.Model):
 
 #Table-2: book details
 class Books(db.Model):
+    __searchable__ = ['book_name'] # author_name
     id = db.Column(db.Integer, primary_key=True)
     book_name = db.Column(db.String(254))
     book_edition = db.Column(db.Integer)
@@ -83,6 +92,8 @@ class Notes(db.Model):
 admin.add_view(ModelView(Users, db.session))
 admin.add_view(ModelView(Books, db.session))
 admin.add_view(ModelView(Notes, db.session))
+
+flask_whooshalchemy.whoosh_index(app, Books)
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -118,8 +129,18 @@ def home():
 @login_required
 def profile():
     if request.method == "POST":
-        return redirect("/upload")
+        search_text = request.form.get('search')
+        results = Books.query.whoosh_search(search_text).all()
+        book_names = [item.book_name for item in results]
+        return redirect(url_for("search_results", results=json.dumps(book_names)))
     return render_template("userpro.html")
+
+@app.route("/results", methods=['GET', 'POST'])
+@login_required
+def search_results():
+    results = request.args["results"]
+    return render_template('search_results.html', results=json.loads(results))
+
 
 @app.route("/upload", methods=['GET', 'POST'])
 @login_required
@@ -194,6 +215,11 @@ def signup():
         return redirect("/")
 
     return render_template("signup.html")
+
+@app.route("/search", methods=["GET", "POST"])
+@login_required
+def search():
+    pass
 
 @app.route("/logout")
 @login_required

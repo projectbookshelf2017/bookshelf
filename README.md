@@ -180,6 +180,12 @@ Project GMail
 emailid: projectbookshelf2017@gmail.com
 password: G680y7%4
 
+Paytm account
+=============
+
+emailid: projectbookshelf2017@gmail.com
+pass: project@2017
+mobile: 7904458605 
 Dropbox secrets
 ===============
 

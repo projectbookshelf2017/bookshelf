@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <title>user profile</title>
+        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='userpro.css') }} />
+        <script>
+            document.getElementById("uploadBtn").onchange = function () {
+    document.getElementById("uploadFile").value = this.value;
+};
+        </script>
+        <script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+function myFunc() {
+    document.getElementById("myDropdown1").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn1')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content1");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+    </head>
+    <body>
+            
+             <div id="content">
+                
+                <div class="im">
+                    <img src={{ url_for('static', filename="pb.jpg") }} width="150px" height="50px">
+                </div>
+                <div id="main">
+                    // drop down
+                    
+                    <div class="dropdown">
+                        <button onclick="myFunction()" class="dropbtn">My Account</button>
+                        <div id="myDropdown" class="dropdown-content">
+                            <a href={{ url_for('home') }}>My Notes</a>
+                            <a href={{ url_for('signout') }}>Logout</a>
+                        </div>
+                    </div>
+
+            </div>
+        
+    </body>
+</html>
