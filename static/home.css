@@ -1,67 +1,98 @@
 body {
-    background-image: url(rsz_1rsz_1bg3.jpg);
-    background-repeat: no-repeat;
-    background-size: 1367px 660px;
+  margin: 0;
+  background: #000; 
+}
+video { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+ 
+  
+  transition: 1s opacity;
+}
+.stopfade { 
+   opacity: .5;
+}
 
+#polina { 
+  font-family: Agenda-Light, Agenda Light, Agenda, Arial Narrow, sans-serif;
+  font-weight:100; 
+  background: rgba(0,0,0,0.3);
+  color: white;
+  padding: 2rem;
+  width: 33%;
+  margin:2rem;
+  position: relative;
+  left: 350px;
+  font-size: 1.2rem;
+    top: 100px;
 }
-#main {
+h1 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  margin-top: 0;
+  letter-spacing: .3rem;
     text-align: center;
+}
+h5{
+  position: relative;
+    bottom: 30px;
+    text-align: center;
+}
+#polina button { 
+  display: block;
+  width: 80%;
+  padding: .4rem;
+  border: none; 
+  margin: 1rem auto; 
+  font-size: 1.3rem;
+  background: rgba(255,255,255,0.23);
+  color: #fff;
+  border-radius: 3px; 
+  cursor: pointer;
+  transition: .3s background;
+  position: relative;
     
-    
-    font-size: 20px;
-    font-family: inherit;
-    padding: 4px;
-    position: relative;
-    width: 400px;
-    left: 950px;
-    top: 201px;
-   
 }
-.im img{
-    position: relative;
-    left: 23px;
-    border-style: solid;
-    border-width: 3px;
+#polina button:hover { 
+   background: rgba(0,0,0,0.5);
 }
-form{
-    font-size: 25px;
-    align-content: center;
-    padding-top: 50px;
+
+
+@media screen and (max-width: 500px) { 
+  div{width:70%;} 
 }
+@media screen and (max-device-width: 800px) {
+  html { background: url(https://thenewcode.com/assets/images/polina.jpg) #000 no-repeat center center fixed; }
+  #bgvid { display: none; }
+}
+
 .txtbox{
-    width: 300px;
+    width: 80%;
     height: 40px;
-    padding: 10px;
+    padding: 20px;
     margin-bottom: 5px;
     background-color: whitesmoke;
-}
-
-.btn{
-     width: 300px;
-    height: 30px;
-    margin-bottom: 10px;
-    background-color: lavender;
+    position: relative;
+    left: 45px;
+    bottom: 30px;
 }
 .new{
     font-size: 16px;
     color: white;
+    position: relative;
+    bottom: 50px;
+    left: 200px;
     
 }
 .new a{
     text-decoration: none;
     color: white;
     
-}
-#quote{
-    width: 150px;
-    height: 200px;
-    
-    position: relative;
-    font-family: inherit;
-    font-size: 50px;
-    text-align: center;
-    color: black;
-    bottom: 260px;
-    right: 43px;
-    float: right;
 }

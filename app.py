@@ -188,13 +188,31 @@ def upload():
         db.session.commit()
 
         flash("File uploaded successfully")
+        return redirect("/profile")
 
     return render_template("upload.html")
 
-@app.route("/book")
+@app.route("/book", methods=["GET", "POST"])
 @login_required
 def book():
-    return  render_template("book.html")
+    if request.method == "POST":
+        form = request.form
+        bookname = form.get("bname")
+        edition = form.get("bedition")
+        author = form.get("Aname")
+        price = form.get("srate")
+
+        buk = Books(book_name=bookname, book_edition=edition, author_name=author, price=price)
+        buk.user_id = current_user.id
+
+        db.session.add(buk)
+        db.session.commit()
+
+        flash("Book added successfully")
+
+        return redirect("/profile")
+
+    return render_template("book.html")
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():

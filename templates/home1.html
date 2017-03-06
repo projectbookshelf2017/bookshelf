@@ -1,57 +1,75 @@
 <html>
     <head>
-        <title>Home Page</title>
-        <!--<link rel="stylesheet" type="text/css" href="home.css" />-->
-        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='home.css') }} />
-        <script language="javascript">
-            <!--function check(form) { /*function to check userid & password*/-->
-                <!--/*the following code checkes whether the entered userid and password are matching*/-->
-                <!--if(form.email.value == "myid@rajalakshmi.edu.in" && form.psw.value == "mypsw") {-->
-                    <!--window.location('userpro.html')/*opens the target page while Id & password matches*/-->
-                <!--}-->
-                <!--else {-->
-                    <!--alert("Invalid Password or Username")/*displays error message*/-->
-                <!--}-->
-            <!--}-->
-        </script>
+        <title> video sample</title>
+        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="home.css") }}>
+
+        <script>
+        var vid = document.getElementById("bgvid");
+        var pauseButton = document.querySelector("#polina button");
+
+        if (window.matchMedia('(prefers-reduced-motion)').matches) {
+            vid.removeAttribute("autoplay");
+            vid.pause();
+            pauseButton.innerHTML = "Paused";
+        }
+
+        function vidFade() {
+          vid.classList.add("stopfade");
+        }
+
+        vid.addEventListener('ended', function()
+        {
+        // only functional if "loop" is removed
+        vid.pause();
+        // to capture IE10
+        vidFade();
+        });
+
+
+        pauseButton.addEventListener("click", function() {
+          vid.classList.toggle("stopfade");
+          if (vid.paused) {
+            vid.play();
+            pauseButton.innerHTML = "Pause";
+          } else {
+            vid.pause();
+            pauseButton.innerHTML = "Paused";
+          }
+        })
+
+
+</script>
+          
+
     </head>
-        <body>
-            
-            <div class="flash_msg">
-            {% with messages = get_flashed_messages() %}
-              {% if messages %}
-                <ul class=flashes>
-                {% for message in messages %}
-                  <li>{{ message }}</li>
-                {% endfor %}
-                </ul>
-              {% endif %}
-            {% endwith %}
+    <body>
+       
+        
+        <video  id="bgvid" playsinline autoplay muted loop>
+          <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
+        <!-- <source src="http://thenewcode.com/assets/videos/polina.webm" type="video/webm"> -->
+        <source src={{ url_for('static', filename="bgv4.mp4") }} type="video/mp4">
+        </video>
+        
+        
+        <div id="polina">
+            <h1>BUKSHELF</h1>
+            <h5>Learn & Earn</h5>
+
+            <div id="main">
+                <form method="POST">
+                    <input class="txtbox" type="text" placeholder="Email" name="email" required><br>
+
+
+                    <input class="txtbox" type="password" placeholder="Password" name="psw" required><br>
+
+                    <button class="btn" type="submit">Login</button><br>
+
+
+                </form>
+                <span class="new"><a href={{ url_for("signup") }} >Sign Up!</a></span>
             </div>
-            <div class="im">
-              <!--<img src="pb.jpg" width="150px" height="50px">-->
-              <img src={{ url_for('static', filename="pb.jpg") }} width="150px" height="50px">
-            </div>
-                <div id="main">
-                    <form method="POST">
-                        <input class="txtbox" type="text" placeholder="Email" name="email" required><br>
-    
-
-                        <input class="txtbox" type="password" placeholder="Password" name="psw" required><br>
-
-                        <button class="btn" type="submit">Login</button><br>
-    
-                    
-                    </form>
-                    <span class="new"><a href={{ url_for("signup") }} >Register here!</a></span>
-                </div>
-
-          <!--  <div id="quote">
-               "Read <br>
-                & <br>
-               Reap" 
-                
-            </div> -->
-            
+        </div>
+        
     </body>
 </html>
