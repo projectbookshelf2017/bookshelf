@@ -1,13 +1,8 @@
 body {
-    background-image: url(b5.jpg);
+    background-image: url(b3.jpg);
     background-size: 1367px 660px; 
 }
-.im img{
-    position: relative;
-    left: 23px;
-    border-style: solid;
-    border-width: 3px;
-}
+
 
 
 #main {

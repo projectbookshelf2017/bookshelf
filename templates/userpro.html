@@ -1,100 +1,53 @@
 <html>
     <head>
-        <title>user profile</title>
-        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='userpro.css') }} />
-        <script>
-            document.getElementById("uploadBtn").onchange = function () {
-    document.getElementById("uploadFile").value = this.value;
-};
-        </script>
-        <script>
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-
-function myFunc() {
-    document.getElementById("myDropdown1").classList.toggle("show");
-}
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn1')) {
-
-    var dropdowns = document.getElementsByClassName("dropdown-content1");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-</script>
+    <title>hexa</title>
+        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="userpro.css") }}>
+        <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,700,800' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Raleway:400,700,300,200,100,900' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'> -->
     </head>
+    
+    
     <body>
-            
-             <div id="content">
-                
-                <div class="im">
-                    <img src={{ url_for('static', filename="pb.jpg") }} width="150px" height="50px">
-                </div>
-                <div id="main">
-                    // drop down
-                    
-                    <div class="dropdown">
-                        <button onclick="myFunction()" class="dropbtn">My Account</button>
-                        <div id="myDropdown" class="dropdown-content">
-                            <a href={{ url_for('home') }}>My Notes</a>
-                            <a href={{ url_for('signout') }}>Logout</a>
-                        </div>
-                    </div>
-                     
-                 
-                <div id="us"> Hi User </div>
-                    
-                    <div id="txt">
-                        Find notes
-                    </div>
-                    
-                    <div id="search">
-                        
-                        <form method="POST">
-                            <input type="text" name="search" placeholder="Search..">
-                            <input type="submit" value="Search" />
-                        </form>
-                    </div>
-                    <!-- <div class="vertical-line" /> -->
+        <div id="header">
+                <h2> BUKSHELF </h2>
+           
+        </div>
 
-                    <div id="text"> Upload your Hand-written notes here! </div>
-                        
-                      <div class="dropdown1">
-                        <button onclick="myFunc()" class="dropbtn1">UPLOAD</button>
-                        <div id="myDropdown1" class="dropdown-content1">
-                            <a href={{ url_for('upload') }}>Notes</a>
-                            <a href={{ url_for('book') }}>Books</a>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
+    <ul id="categories" class="clr">
         
-    </body>
+       
+      <li class="pusher"></li>
+        <li>
+          <div>
+            <img src={{ url_for('static', filename="learn.jpg") }} alt=""/>
+            <h1>To Learn</h1>
+            <p>Search through the bunch of authorized notes, select and download necessary notes and improve your grades.</p>
+        </div>
+      </li>
+        
+        <li>
+          <div>
+            <img src={{ url_for('static', filename="Earn.jpg") }} alt=""/>
+            <h1>To Earn</h1>
+            <p>Upload your hand-written notes in pdf format or provide your textbook details, set price and earn pocket money.</p>
+        </div>
+      </li>
+        
+        
+        <div id="upload">
+            <a href={{ url_for('upload') }}> Upload </a>
+        </div>
+         
+    </ul>
+        <div id="search">
+                        
+            <form>
+                <input type="text" name="search" placeholder="Search..">
+            </form>
+        </div>
+        
+     <a id="fork" href={{ url_for('signout') }}>Signout</a>
+        
+    </body>   
 </html>

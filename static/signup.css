@@ -2,12 +2,7 @@ body{
     background-image: url(b3.jpg);
     background-size: 1367px 660px; 
 }
-.im img{
-    position: relative;
-    left: 29px;
-    border-style: solid;
-    border-width: 3px;
-}
+
 #main{
     
     width: 330px;
@@ -16,6 +11,12 @@ body{
     font-family: inherit;
     top: 50px;
     left: 23px;
+}
+.im img{
+    position: relative;
+    left: 29px;
+    border-style: solid;
+    border-width: 3px;
 }
 #bt{
     font-size: 20px;
