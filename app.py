@@ -245,5 +245,12 @@ def signout():
     logout_user()
     return redirect("/")
 
+@app.route("/select")
+@login_required
+def select():
+
+    return render_template("select.html")
+
+
 if __name__ == "__main__":
     app.run(debug=True)

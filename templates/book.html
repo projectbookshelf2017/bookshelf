@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>book</title>
-        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='book.css') }} />
+        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="book.css") }} />
         <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
         <script type="text/javascript">
          $(document).ready(function() {
@@ -24,42 +24,40 @@
         </script> -->
     </head>
 
-<body>
-    
-    
-    <div id="content">
-        
-        
-        
+    <body>
 
-        
-        <div id="main">    
-        
-            <form id="book" method="POST">
-            <table>
-                <tr class="txt">
-                    <td>Book Details</td>
-                </tr>
-                <tr>
-                    <td><input class="txtbox" placeholder="Book Name" type="text" name="bname" required></td>
-                </tr>
-                <tr>
-                <td><input class="txtbox" placeholder="Book Edition" type="text" name="bedition" required></td>
-                </tr>
-                 <tr>
-                    <td><input class="txtbox" placeholder="Author Name" type="text" name="Aname" required></td>
-                </tr>
-                 <tr>
-                    <td><input class="txtbox" placeholder="Price" type="number" name="srate" min="1" max="150"  required></td>
-                 </tr>
-                <tr>
-                    <td><input id="bt" type="submit" value="Submit" /></td>
-                </tr>
-         
-            </table>
-            </form>
-        </div>
-    </div>
-</div> 
-</body>
+        <div id="header">
+                <h2> BUKSHELF </h2>
+
+            </div>
+
+            <div id="main">    
+
+                <form id="book" method="POST">
+                    <table>
+                        <tr class="txt">
+                            <td class="txthead">Book Details</td>
+                        </tr>
+                        <tr>
+                            <td><input class="txtbox" placeholder="Book Name" type="text" name="bname" required></td>
+                        </tr>
+                        <tr>
+                        <td><input class="txtbox" placeholder="Book Edition" type="text" name="bedition" required></td>
+                        </tr>
+                         <tr>
+                            <td><input class="txtbox" placeholder="Author Name" type="text" name="Aname" required></td>
+                        </tr>
+                         <tr>
+                            <td><input class="txtbox" placeholder="Price" type="number" name="srate" min="1" max="150"  required></td>
+                         </tr>
+                        <tr>
+                            <td><input id="bt" type="submit" value="Submit" /></td>
+                        </tr>
+
+                    </table>
+                </form>
+            </div>
+
+        </div> 
+    </body>
 </html>

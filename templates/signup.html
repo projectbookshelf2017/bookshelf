@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>signup</title>
+       <title>signup</title>
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="signup.css") }} />
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script type="text/javascript">
          $(document).ready(function() {
             //write your scripts here
@@ -16,65 +16,48 @@
                     } else {
                         alert("Registered Successfully");
                     }
-                 
+
                 });
          });
 
-        //    function Function1() {
-        //        console.log("I got into f1");
-//                var password = document.getElementById("pwd1").value;
-//                var confirmPassword = document.getElementById("pwd2").value;
-//                if (password != confirmPassword) {
-//                    alert("Passwords do not match.");
-//                    return false;
-//                } else {
-        //            console.log("I got executed");
-        //            url = "/home1.html";
-        //    //        document.location.href = "home1.html";
-        //            $(location).attr('href',url);
-        //            return true;
-        //        }
-        //    }
         </script>
     </head>
 
-<body>
-    
-    
-    <div id="content">
-        
-        
-        <div class="im">
-              <img src={{ url_for('static', filename="pb.jpg") }} width="150px" height="50px">
-            </div>
 
-        
-        <div id="main">    
-        
-            <form id="signup" method="POST">
-            <table>
-                <tr>
-                    <td><input class="txtbox" placeholder="Name" type="text" name="name" required></td>
-                </tr>
-                    <td> <input class="txtbox" placeholder="Department" type="text" name="dpt" required></td>
-                </tr>
-                <tr>
-                <td><input class="txtbox" placeholder="Email" type="email" name="email" required></td>
-                </tr> 
-                <tr>
-                    <td><input class="txtbox" placeholder="Password" type="password" id="pwd1" name="pwd1" required></td>
-                </tr>
-                <tr>
-                <td><input class="txtbox" placeholder="Confirm Password" type="password" id="pwd2" name="pwd2" required></td>
-                </tr>
-                <tr>
-                    <td><input id="bt" type="submit" value="Submit" /></td>
-                </tr>
-         
-            </table>
+    <body>
+        <div id="header">
+                <h2> BUKSHELF </h2>
+
+        </div>
+
+
+        <div id="main">
+
+            <h1> SIGN UP! </h1>
+
+            <form id="signup" action="home1.html" method="GET">
+                <table>
+                    <tr>
+                        <td><input class="txtbox" placeholder="Name" type="text" name="name" required></td>
+                    </tr>
+                    <tr>
+                        <td> <input class="txtbox" placeholder="Department" type="text" name="dpt" required></td>
+                    </tr>
+                    <tr>
+                    <td><input class="txtbox" placeholder="Email" type="email" name="email" required></td>
+                    </tr>
+                    <tr>
+                        <td><input class="txtbox" placeholder="Password" type="password" id="pwd1" required></td>
+                    </tr>
+                    <tr>
+                    <td><input class="txtbox" placeholder="Confirm Password" type="password" id="pwd2" required></td>
+                    </tr>
+                    <tr>
+                        <td><input id="bt" type="submit" value="Submit" /></td>
+                    </tr>
+                </table>
             </form>
         </div>
-    </div>
-</div> 
-</body>
+    </body>
 </html>
+

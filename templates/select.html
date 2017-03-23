@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title> select </title>
+        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="select.css") }}>
+    </head>
+    
+    
+    <body>
+        <div id="header">
+                <h2> BUKSHELF </h2>
+           
+        </div>
+      <center>
+          <a href={{ url_for('upload') }}> <img src={{ url_for('static', filename="notes.jpg") }} alt="notes" width="600px" height="560px"> </a>
+      
+          <a href={{ url_for('book') }}> <img src={{ url_for('static', filename="books.jpg") }} alt="books" width="600px" height="560px"> </a>
+        </center>
+    
+        
+     <a id="fork" href={{ url_for('signout') }}>Signout</a> 
+        
+    </body>   
+</html>

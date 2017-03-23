@@ -1,22 +1,47 @@
 body{
-    background-image: url(b3.jpg);
-    background-size: 1367px 660px; 
-}
+  font-family: 'Open Sans', arial, sans-serif;
+  background:rgb(123, 158, 158);
 
+}
+*{
+  margin:0;
+  padding:0;
+}
+#header{
+    background-color: black;
+    height: 60px;
+}
+h2 {
+  font-family: Agenda-Light, Agenda Light, Agenda, Arial Narrow, sans-serif;
+  font-weight:100; 
+  color: white;
+  padding: 2rem;
+  margin:2rem;
+  position: relative;
+  
+  text-transform: uppercase;
+  margin-top: 0;
+  letter-spacing: .3rem;
+  bottom: 19px; 
+  right: 50px;    
+}
 #main{
     
     width: 330px;
     height: 310px;
     position: relative;
-    font-family: inherit;
-    top: 50px;
-    left: 23px;
+    font-family: Agenda-Light, Agenda Light, Agenda, Arial Narrow, sans-serif;
+    text-transform: uppercase;
+    top: 150px;
+    left: 500px;
 }
 #bt{
     font-size: 20px;
-    font-family: inherit;
+    font-family: Agenda-Light, Agenda Light, Agenda, Arial Narrow, sans-serif;
+    text-transform: uppercase;
     width: 323px;
     height: 35px;
+    letter-spacing: .3rem;
     
 }
 .txtbox{
@@ -35,3 +60,9 @@ body{
 }
 
 
+.txthead{
+    font-size: 45px;
+    text-align: center;
+    position: relative;
+    bottom: 50px;
+}

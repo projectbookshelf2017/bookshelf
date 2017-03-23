@@ -1,6 +1,6 @@
 <html>
     <head>
-    <title>hexa</title>
+    <title> userprofile </title>
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="userpro.css") }}>
         <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,700,800' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Raleway:400,700,300,200,100,900' rel='stylesheet' type='text/css'>
@@ -20,7 +20,7 @@
       <li class="pusher"></li>
         <li>
           <div>
-            <img src={{ url_for('static', filename="learn.jpg") }} alt=""/>
+            <img src={{ url_for('static', filename="learn.jpg") }} alt="learn"/>
             <h1>To Learn</h1>
             <p>Search through the bunch of authorized notes, select and download necessary notes and improve your grades.</p>
         </div>
@@ -28,7 +28,7 @@
         
         <li>
           <div>
-            <img src={{ url_for('static', filename="Earn.jpg") }} alt=""/>
+            <img src={{ url_for('static', filename="Earn.jpg") }} alt="earn"/>
             <h1>To Earn</h1>
             <p>Upload your hand-written notes in pdf format or provide your textbook details, set price and earn pocket money.</p>
         </div>
@@ -36,7 +36,7 @@
         
         
         <div id="upload">
-            <a href={{ url_for('upload') }}> Upload </a>
+            <a href={{ url_for('select') }}> Upload </a>
         </div>
          
     </ul>
