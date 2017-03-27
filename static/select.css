@@ -1,0 +1,70 @@
+body{
+  font-family: 'Open Sans', arial, sans-serif;
+  background:rgb(123, 158, 158);
+
+}
+*{
+  margin:0;
+  padding:0;
+}
+
+#header{
+    background-color: black;
+    height: 60px;
+}
+h2 {
+  font-family: Agenda-Light, Agenda Light, Agenda, Arial Narrow, sans-serif;
+  font-weight:100; 
+  color: white;
+  padding: 2rem;
+  margin:2rem;
+  position: relative;
+  
+  text-transform: uppercase;
+  margin-top: 0;
+  letter-spacing: .3rem;
+  bottom: 19px; 
+  right: 50px;    
+}
+#fork{
+  position:fixed;
+  top:0;
+  right:0;
+  color:white;
+  text-decoration:none;
+  border:1px solid #000;
+  padding:.5em .7em;
+  margin:1%;
+  transition: color .5s;
+  overflow:hidden;
+  
+}
+
+#fork:hover {
+  color: gray;
+}
+
+
+center{
+    padding-top: 20px;
+    
+}
+input[type=text] {
+    width: 382px;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 4px;
+    font-size: 34px;
+    background-color: white;
+    background-image: url('s.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    left: 490px;
+    bottom: 585px;
+}
+#header a{
+    text-decoration: none;
+    color: white;
+}

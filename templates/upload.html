@@ -2,7 +2,7 @@
     <head>
         <title> Upload </title>
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="upload.css") }}/>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
         <script type="text/javascript">
          $(document).ready(function() {
             //write your scripts here
@@ -17,35 +17,40 @@
     <body>
 
         <div id="header">
-                <h2> BUKSHELF </h2>
+            <h2> <a href={{ url_for('profile') }}> BUKSHELF </a> </h2>
 
         </div>
 
 
             <div id="notes">
 
-                    <form id="upload" action="userpro.html">
+                    <form id="upload" method="POST" enctype="multipart/form-data">
                         <table>
                             <tr class="txt">
                             <td class="txthead">UPLOAD NOTES</td>
                         </tr>
                             <tr>
-                                <td> <input class="textbox" type="text" name="bname" placeholder="File Name"  required></td>
+                                <td> <input class="textbox" type="text" name="title" placeholder="File Name"  required></td>
+                            </tr>
+                            <tr>
+                                <td> <textarea name="description" placeholder="Description" cols="33" rows="5" required></textarea></td>
+                            </tr>
+                            <tr>
+                                <td><input id="cfile" name="file" type="file" required></td>
                             </tr>
 
                             <tr>
-                                <td><input id="cfile"  type="file" required></td>
-                            </tr>
-
-                            <tr>
-                                <td><input class="textbox" type="number" name="srate" placeholder="Price" min="1" max="150" required></td>
+                                <td><input class="textbox" type="number" name="price" placeholder="Price" min="1" max="500" required></td>
                             </tr>
                             <tr>
                                 <td><input id="bt" type="submit" value="Submit" /></td>
                             </tr>
                         </table>
                    </form>
-                </div>
+            </div>
+
+
+            <a id="fork" href={{ url_for('signout') }}>Signout</a>
 
 
 

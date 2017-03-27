@@ -3,7 +3,8 @@
     <head>
         <title>book</title>
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="book.css") }} />
-        <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+        <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script type="text/javascript" src={{ url_for('static', filename="notify.min.js") }} />
         <script type="text/javascript">
          $(document).ready(function() {
             //write your scripts here
@@ -27,7 +28,7 @@
     <body>
 
         <div id="header">
-                <h2> BUKSHELF </h2>
+                <h2> <a href={{ url_for('profile') }}> BUKSHELF </a> </h2>
 
             </div>
 
@@ -48,7 +49,7 @@
                             <td><input class="txtbox" placeholder="Author Name" type="text" name="Aname" required></td>
                         </tr>
                          <tr>
-                            <td><input class="txtbox" placeholder="Price" type="number" name="srate" min="1" max="150"  required></td>
+                            <td><input class="txtbox" placeholder="Price" type="number" name="srate" min="1" max="1500"  required></td>
                          </tr>
                         <tr>
                             <td><input id="bt" type="submit" value="Submit" /></td>
@@ -58,6 +59,9 @@
                 </form>
             </div>
 
-        </div> 
+        </div>
+
+
+        <a id="fork" href={{ url_for('signout') }}>Signout</a>
     </body>
 </html>

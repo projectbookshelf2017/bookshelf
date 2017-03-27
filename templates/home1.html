@@ -2,7 +2,8 @@
     <head>
         <title> home page </title>
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="home.css") }}>
-
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script type="text/javascript" src={{ url_for('static', filename="notify.min.js") }} />
         <script>
         var vid = document.getElementById("bgvid");
         var pauseButton = document.querySelector("#polina button");
@@ -43,8 +44,6 @@
 
     </head>
     <body>
-       
-        
         <video poster="bg.jpg" id="bgvid" playsinline autoplay muted loop>
           <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
         <!-- <source src="http://thenewcode.com/assets/videos/polina.webm" type="video/webm"> -->
@@ -67,7 +66,7 @@
 
 
                 </form>
-                <span class="new"><a href={{ url_for("signup") }} >Sign Up!</a></span>
+                <span class="new"><a href={{ url_for("signup") }} >Sign Up </a></span>
             </div>
         </div>
         

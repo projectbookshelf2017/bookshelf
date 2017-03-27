@@ -1,73 +1,114 @@
 <html>
     <head>
         <title>user profile</title>
-        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='userpro.css') }} />
+        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='search_results.css') }} />
+        <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
         <script>
             document.getElementById("uploadBtn").onchange = function () {
-    document.getElementById("uploadFile").value = this.value;
-};
+            document.getElementById("uploadFile").value = this.value;
+        };
         </script>
         <script>
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
+        /* When the user clicks on the button, 
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
 
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
 
-function myFunc() {
-    document.getElementById("myDropdown1").classList.toggle("show");
-}
+        function myFunc() {
+            document.getElementById("myDropdown1").classList.toggle("show");
+        }
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn1')) {
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn1')) {
 
-    var dropdowns = document.getElementsByClassName("dropdown-content1");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-</script>
+            var dropdowns = document.getElementsByClassName("dropdown-content1");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
+        </script>
     </head>
     <body>
+        
+        <div id="header">
+                <h2> <a href={{ url_for('profile') }}>  BUKSHELF </a> </h2>
+           
+        </div>
             
              <div id="content">
-                
-                <div class="im">
-                    <img src={{ url_for('static', filename="pb.jpg") }} width="150px" height="50px">
-                </div>
-                <div id="main">
-                    // drop down
-                    
-                    <div class="dropdown">
-                        <button onclick="myFunction()" class="dropbtn">My Account</button>
-                        <div id="myDropdown" class="dropdown-content">
-                            <a href={{ url_for('home') }}>My Notes</a>
-                            <a href={{ url_for('signout') }}>Logout</a>
-                        </div>
-                    </div>
 
-            </div>
-        
+                
+                <div id="main">
+
+                    <h1>Books</h1>
+                    <table class="table">
+                    {% for item in book_results %}
+                    <TR>
+                       <TD class="c2">{{item}}</TD>
+                    </TR>
+                    {% endfor %}
+                    </table>
+                    <h1>Notes</h1>
+                    <table class="table">
+                    {% for item in note_results %}
+                    <TR>
+                       <TD class="c2">{{item.title}}</TD>
+                       <TD class="c2">{{item.description}}</TD>
+                       <TD class="c2">{{"Rs. {:.2f}".format(item.price / 100)}}</TD>
+                       <TD class="c2">
+                           <form method="POST">
+                            <!-- Note that the amount is in paise = 50 INR -->
+                            <script
+                                src="https://checkout.razorpay.com/v1/checkout.js"
+                                data-key="rzp_test_914DfGElWCfDjm"
+                                data-amount="{{item.price}}"
+                                data-buttontext="Pay"
+                                data-name="BukShelf"
+                                data-description="Purchase notes"
+                                data-image="https://your-awesome-site.com/your_logo.jpg"
+                                data-prefill.name=""
+                                data-prefill.email=""
+                                data-theme.color="#F37254"
+                            ></script>
+                            <input type="hidden" value="{{item.id}}" name="notes_id">
+                           </form>
+                        </TD>
+                    </TR>
+                    {% endfor %}
+                    </table>
+
+                </div>
+                <div id="search">
+
+                    <form method="POST">
+                        <input type="text" name="search" placeholder="Search..">
+                    </form>
+                </div>
+
+                <a id="fork" href={{ url_for('signout') }}>Signout</a>
+             </div>
+
     </body>
 </html>

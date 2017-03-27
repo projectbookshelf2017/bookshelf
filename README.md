@@ -247,3 +247,8 @@ Install PostGRES SQL on Heroku cloud
     `db.drop_all()`
     # recreate the database using
     `db.create_all()`
+    
+Extras:
+=======
+
+If you change schema of DB, remember to delete `whoosh_index` files.
