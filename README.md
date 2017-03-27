@@ -180,7 +180,7 @@ Project GMail
 emailid: projectbookshelf2017@gmail.com
 password: G680y7%4
 
-Paytm account
+Paytm/godaddy account
 =============
 
 emailid: projectbookshelf2017@gmail.com
@@ -252,3 +252,4 @@ Extras:
 =======
 
 If you change schema of DB, remember to delete `whoosh_index` files.
+
