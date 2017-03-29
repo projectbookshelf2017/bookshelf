@@ -144,7 +144,7 @@ def home():
             login_user(user)
             return redirect("/profile")
         else:
-            flash("Unauthorized User. Please Signup")
+            flash("Unauthorized User|Please signup|warning")
             # return redirect("/")
     return render_template("home1.html")
 
@@ -165,14 +165,21 @@ def signup():
         conpassword = form["pwd2"]    # prevalidated in front-end
 
         if password != conpassword:
-            flash("Passwords mismatch", 'error')
+            flash("Passwords mismatch||error")
             return render_template("signup.html")
+
+        # check if user already exists in DB
+        user = Users.query.filter_by(email=email).all()
+        if user:    #if not empty
+            flash("User exists||warning")
+            return redirect("/")
 
         # Add new user info to DB
         new_user = Users(name=name, email=email, department=department, password=password)    # create a Users table record (row)
         db.session.add(new_user)
         db.session.commit()
 
+        flash("Registered successfully||success")
         return redirect("/")
 
     return render_template("signup.html")
@@ -186,13 +193,39 @@ def profile():
         search_text = request.form.get('search')
         book_results = Books.query.whoosh_search(search_text).all()
         note_results = Notes.query.whoosh_search(search_text).all()
-        book_names = [item.book_name for item in book_results]
-        note_names = [{"id": item.id, "title": item.title, "description": item.description, "price": item.price*100} for item in note_results]
+        book_names = [{"id": item.id, "book_name": item.book_name} for item in book_results]
+        note_names = [{"id": item.id, "title": item.title, "description": item.description, "price": item.price * 100}
+                      for item in note_results]
         print(book_names)
         print(note_names)
         return redirect(url_for("search_results", book_results=json.dumps(book_names),
                                 note_results=json.dumps(note_names)))
     return render_template("userpro.html")
+
+@app.route("/account", methods=["GET", "POST"])
+@login_required
+def account():
+    if request.method == "POST":
+        print(request.form)
+        search_text = request.form.get('search')
+        book_results = Books.query.whoosh_search(search_text).all()
+        note_results = Notes.query.whoosh_search(search_text).all()
+        book_names = [{"id": item.id, "book_name": item.book_name} for item in book_results]
+        note_names = [{"id": item.id, "title": item.title, "description": item.description, "price": item.price * 100}
+                      for item in note_results]
+        print(book_names)
+        print(note_names)
+        return redirect(url_for("search_results", book_results=json.dumps(book_names),
+                                note_results=json.dumps(note_names)))
+
+    notes_uploaded = Notes.query.filter_by(user_id=current_user.id).all()
+    print(notes_uploaded)
+    notes_downloaded_ids = current_user.notes_bought
+    print(notes_downloaded_ids)
+    notes_downloaded = Notes.query.filter(Notes.id.in_(notes_downloaded_ids)).all()
+    books_owned = Books.query.filter_by(user_id=current_user.id).all()
+    print(books_owned)
+    return render_template("account.html", notes_uploaded=notes_uploaded, notes_downloaded=notes_downloaded, books_owned=books_owned)
 
 @app.route("/results", methods=['GET', 'POST'])
 @login_required
@@ -201,39 +234,48 @@ def search_results():
         print("After transaction")
         print(request.form)
         form = request.form
-        notes_id = form['notes_id']  # Notes ID
-        payment_id = form['razorpay_payment_id']    # TODO store this in DB
-        notes_bought_json = current_user.notes_bought
+        notes_id = form.get('notes_id', None)  # Notes ID
+        if notes_id:
+            payment_id = form['razorpay_payment_id']    # TODO store this in DB
+            notes_bought_json = current_user.notes_bought
 
-        if not notes_bought_json:
-            # if empty, create a empty list
-            notes_bought_json = "[]"
+            if not notes_bought_json:
+                # if empty, create a empty list
+                notes_bought_json = "[]"
 
-        notes_bought = json.loads(notes_bought_json)
-        notes_bought.append(int(notes_id))
-        notes_bought_json = json.dumps(notes_bought)
-        current_user.notes_bought = notes_bought_json
-        db.session.commit()
+            notes_bought = json.loads(notes_bought_json)
+            notes_bought.append(int(notes_id))
+            notes_bought_json = json.dumps(notes_bought)
+            current_user.notes_bought = notes_bought_json
+            db.session.commit()
 
-        # Download file from dropbox
-        client = dropbox.Dropbox(dropbox_token)
-        notes_obj = Notes.query.filter_by(id=int(notes_id)).first()
-        path = notes_obj.dropbox_path
+            # Download file from dropbox
+            client = dropbox.Dropbox(dropbox_token)
+            notes_obj = Notes.query.filter_by(id=int(notes_id)).first()
+            path = notes_obj.dropbox_path
 
-        # TODO Check for content hash
-        try:
-            md, res = client.files_download(path)
-        except dropbox.exceptions.HttpError as err:
-            print('*** HTTP error', err)
-            return None
+            # TODO Check for content hash
+            try:
+                md, res = client.files_download(path)
+            except dropbox.exceptions.HttpError as err:
+                print('*** HTTP error', err)
+                return None
 
-        data = res.content
-        print(len(data), 'bytes; md:', md)
-        original_filename = notes_obj.original_filename
+            data = res.content
+            print(len(data), 'bytes; md:', md)
+            original_filename = notes_obj.original_filename
 
-        response = make_response(data)
-        response.headers["Content-Disposition"] = "attachment; filename={FILENAME}".format(FILENAME=original_filename)
-        return response
+            response = make_response(data)
+            response.headers["Content-Disposition"] = "attachment; filename={FILENAME}".format(FILENAME=original_filename)
+            return response
+        else:
+            book_id = form.get('book_id', None)  # Books ID
+            book = Books.query.filter_by(id=int(book_id)).first()
+            user_id = book.user_id
+            user = Users.query.filter_by(id=user_id).first()
+            email = user.email
+            flash("Contact|" + str(email))    # here Pipe (|) is the delimiter that we are looking for in the JS side
+            print(email)
 
     book_results = request.args["book_results"]
     note_results = request.args["note_results"]
@@ -287,7 +329,7 @@ def upload():
         db.session.commit()
 
 
-        flash("File uploaded successfully")
+        flash("File uploaded successfully||success")
         print("File uploaded successfully")
         return redirect("/profile")
 
@@ -309,7 +351,7 @@ def book():
         db.session.add(buk)
         db.session.commit()
 
-        flash("Book added successfully")
+        flash("Book added successfully||success")
 
         return redirect("/profile")
 
@@ -335,7 +377,7 @@ def select():
         search_text = request.form.get('search')
         book_results = Books.query.whoosh_search(search_text).all()
         note_results = Notes.query.whoosh_search(search_text).all()
-        book_names = [item.book_name for item in book_results]
+        book_names = [{"id": item.id, "book_name": item.book_name} for item in book_results]
         note_names = [{"id": item.id, "title": item.title, "description": item.description, "price": item.price*100} for item in note_results]
         print(book_names)
         print(note_names)

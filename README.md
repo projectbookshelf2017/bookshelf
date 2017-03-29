@@ -248,6 +248,12 @@ Install PostGRES SQL on Heroku cloud
     # recreate the database using
     `db.create_all()`
     
+Sweet Alert
+===========
+
+A nice alert box: http://t4t5.github.io/sweetalert/
+
+
 Extras:
 =======
 

@@ -4,7 +4,9 @@
        <title>signup</title>
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="signup.css") }} />
         <script type="text/javascript" src="{{ url_for('static', filename='sweetalert.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='pace.min.js') }}"></script>
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="sweetalert.css") }} />
+        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="pace.css") }} />
     </head>
 
 
@@ -14,13 +16,21 @@
             <script>
               var messages = {{ messages | safe }};
               for (var i=0; i<messages.length; i++) {
-                swal(messages[i]);
+                var msg = messages[i];
+                var res = msg.split("|");
+                if (res.length === 3){
+                    swal(res[0], res[1],res[2]);
+                } else if (res.length === 2) {
+                    swal(res[0], res[1]);
+                } else {
+                    swal(res[0]);
+                }
               }
             </script>
           {% endif %}
         {% endwith %}
         <div id="header">
-                <h2>  BUKSHELF  </h2>
+                <h2>  <a href={{ url_for('profile') }}> BUKSHELF </a> </h2>
 
         </div>
 

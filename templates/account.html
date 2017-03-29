@@ -1,15 +1,13 @@
 <html>
     <head>
-        <title> select </title>
-        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="select.css") }}>
+    <title> userprofile </title>
+        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="userpro.css") }}>
         <script type="text/javascript" src="{{ url_for('static', filename='sweetalert.min.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='pace.min.js') }}"></script>
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="sweetalert.css") }} />
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="pace.css") }} />
-        <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
     </head>
-    
-    
+
     <body>
         {% with messages = get_flashed_messages() %}
           {% if messages %}
@@ -33,20 +31,32 @@
                 <h2>  <a href={{ url_for('profile') }}> BUKSHELF </a> </h2>
            
         </div>
-      <center>
-          <a href={{ url_for('upload') }}> <img src={{ url_for('static', filename="notes1.jpg") }} alt="notes" width="500px" > </a>
-      
-          <a href={{ url_for('book') }}> <img src={{ url_for('static', filename="books1.jpg") }} alt="books" width="500px" > </a>
-        </center>
-    
+        <h1>Downloaded</h1>
+        {% for item in notes_downloaded %}
+        <TR>
+           <TD class="c2">{{item.title}}</TD>
+        </TR>
+        {% endfor %}
+        <h1>Uploaded</h1>
+        {% for item in notes_uploaded %}
+        <TR>
+           <TD class="c2">{{item.title}}</TD>
+        </TR>
+        {% endfor %}
+        <h1>Books owned</h1>
+        {% for item in books_owned %}
+        <TR>
+           <TD class="c2">{{item.book_name}}</TD>
+        </TR>
+        {% endfor %}
         <div id="search">
-
+                        
             <form method="POST">
                 <input type="text" name="search" placeholder="Search..">
             </form>
         </div>
-
-     <a id="fork" href={{ url_for('signout') }}>Signout</a> 
+        
+     <a id="fork" href={{ url_for('signout') }}>Signout</a>
         
     </body>   
 </html>

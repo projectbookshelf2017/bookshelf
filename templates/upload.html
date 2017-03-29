@@ -3,18 +3,10 @@
         <title> Upload </title>
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="upload.css") }}/>
         <script type="text/javascript" src="{{ url_for('static', filename='sweetalert.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='pace.min.js') }}"></script>
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="sweetalert.css") }} />
+        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="pace.css") }} />
         <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
-        <script type="text/javascript">
-         $(document).ready(function() {
-            //write your scripts here
-             $(document).on("submit", "#upload", function(e) {
-                        alert("Upload Successful");
-
-
-                });
-         });
-        </script>
     </head>
     <body>
         {% with messages = get_flashed_messages() %}
@@ -22,7 +14,15 @@
             <script>
               var messages = {{ messages | safe }};
               for (var i=0; i<messages.length; i++) {
-                swal(messages[i]);
+                var msg = messages[i];
+                var res = msg.split("|");
+                if (res.length === 3){
+                    swal(res[0], res[1],res[2]);
+                } else if (res.length === 2) {
+                    swal(res[0], res[1]);
+                } else {
+                    swal(res[0]);
+                }
               }
             </script>
           {% endif %}
@@ -60,10 +60,7 @@
                    </form>
             </div>
 
-
             <a id="fork" href={{ url_for('signout') }}>Signout</a>
-
-
 
     </body>
 </html>

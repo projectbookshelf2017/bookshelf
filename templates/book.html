@@ -4,7 +4,9 @@
         <title>book</title>
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="book.css") }} />
         <script type="text/javascript" src="{{ url_for('static', filename='sweetalert.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='pace.min.js') }}"></script>
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="sweetalert.css") }} />
+        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="pace.css") }} />
         <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script type="text/javascript" src={{ url_for('static', filename="notify.min.js") }} />
         <script type="text/javascript">
@@ -33,7 +35,15 @@
             <script>
               var messages = {{ messages | safe }};
               for (var i=0; i<messages.length; i++) {
-                swal(messages[i]);
+                var msg = messages[i];
+                var res = msg.split("|");
+                if (res.length === 3){
+                    swal(res[0], res[1],res[2]);
+                } else if (res.length === 2) {
+                    swal(res[0], res[1]);
+                } else {
+                    swal(res[0]);
+                }
               }
             </script>
           {% endif %}

@@ -3,64 +3,25 @@
         <title>user profile</title>
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='search_results.css') }} />
         <script type="text/javascript" src="{{ url_for('static', filename='sweetalert.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='pace.min.js') }}"></script>
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="sweetalert.css") }} />
-        <!--<link rel="stylesheet" type="text/css" href={{ url_for('static', filename='foundation.min.css') }} />-->
-        <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
-        <!--<script type="text/javascript" src="{{ url_for('static', filename='foundation.min.js') }}"></script>-->
-        <script>
-            document.getElementById("uploadBtn").onchange = function () {
-            document.getElementById("uploadFile").value = this.value;
-        };
-        </script>
-        <script>
-        /* When the user clicks on the button, 
-        toggle between hiding and showing the dropdown content */
-        function myFunction() {
-            document.getElementById("myDropdown").classList.toggle("show");
-        }
-
-        // Close the dropdown if the user clicks outside of it
-        window.onclick = function(event) {
-          if (!event.target.matches('.dropbtn')) {
-
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-              var openDropdown = dropdowns[i];
-              if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-              }
-            }
-          }
-        }
-
-        function myFunc() {
-            document.getElementById("myDropdown1").classList.toggle("show");
-        }
-
-        // Close the dropdown if the user clicks outside of it
-        window.onclick = function(event) {
-          if (!event.target.matches('.dropbtn1')) {
-
-            var dropdowns = document.getElementsByClassName("dropdown-content1");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-              var openDropdown = dropdowns[i];
-              if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-              }
-            }
-          }
-        }
-        </script>
+        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="pace.css") }} />
     </head>
     <body>
-        {% with messages = get_flashed_messages() %}
+        {% with messages = get_flashed_messages(with_categories=true) %}
           {% if messages %}
             <script>
               var messages = {{ messages | safe }};
               for (var i=0; i<messages.length; i++) {
-                swal(messages[i]);
+                var msg = messages[i];
+                var res = msg.split("|");
+                if (res.length === 3){
+                    swal(res[0], res[1],res[2]);
+                } else if (res.length === 2) {
+                    swal(res[0], res[1]);
+                } else {
+                    swal(res[0]);
+                }
               }
             </script>
           {% endif %}
@@ -79,7 +40,12 @@
                     <table class="table">
                     {% for item in book_results %}
                     <TR>
-                       <TD class="c2">{{item}}</TD>
+                       <TD class="c2">{{item.book_name}}</TD>
+                        <TD class="c2"><form method="POST">
+                            <input type="submit" name="contact" value="Contact Details">
+                            <input type="hidden" name="book_id" value="{{ item.id }}">
+                            </form>
+                        </TD>
                     </TR>
                     {% endfor %}
                     </table>

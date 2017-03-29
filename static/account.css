@@ -140,7 +140,6 @@ body{
   color: gray;
 }
 
-
 #header{
     background-color: black;
     height: 60px;
@@ -196,31 +195,6 @@ input[type=text] {
     background-position: center;
     position: relative;
     left: 490px;
-    bottom: 232px;
+    bottom: 490px;
 }
 
-.table {
-    position: relative;
-    margin: auto;
-
-}
-.c2{
-   color: white;
-    font-family: Agenda-Light, Agenda Light, Agenda, Arial Narrow, sans-serif;
-    text-align: center;
-    font-size: 28px;
-    padding: 10px;
-}
-#header a{
-    text-decoration: none;
-    color: white;
-}
-h1 {
-  font-family: Agenda-Light, Agenda Light, Agenda, Arial Narrow, sans-serif;
-  color: white;
-  position: relative;
-  text-transform: uppercase;
-  margin-top: 0;
-  letter-spacing: .3rem;
-   text-align:center;
-}

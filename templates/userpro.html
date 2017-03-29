@@ -3,27 +3,32 @@
     <title> userprofile </title>
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="userpro.css") }}>
         <script type="text/javascript" src="{{ url_for('static', filename='sweetalert.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='pace.min.js') }}"></script>
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="sweetalert.css") }} />
-        <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
-        <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,700,800' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Raleway:400,700,300,200,100,900' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'> -->
+        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="pace.css") }} />
     </head>
-    
-    
+
     <body>
         {% with messages = get_flashed_messages() %}
           {% if messages %}
             <script>
               var messages = {{ messages | safe }};
               for (var i=0; i<messages.length; i++) {
-                swal(messages[i]);
+                var msg = messages[i];
+                var res = msg.split("|");
+                if (res.length === 3){
+                    swal(res[0], res[1],res[2]);
+                } else if (res.length === 2) {
+                    swal(res[0], res[1]);
+                } else {
+                    swal(res[0]);
+                }
               }
             </script>
           {% endif %}
         {% endwith %}
         <div id="header">
-                <h2>  BUKSHELF  </h2>
+                <h2>  BUKSHELF </h2>
            
         </div>
 
@@ -61,6 +66,7 @@
         </div>
         
      <a id="fork" href={{ url_for('signout') }}>Signout</a>
+    <a id="my_account" href={{ url_for('account') }}>My Account</a>
         
     </body>   
 </html>
