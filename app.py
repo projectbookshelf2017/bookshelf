@@ -222,7 +222,10 @@ def account():
     # print(notes_uploaded)
     notes_downloaded_ids = current_user.notes_bought
     # print(notes_downloaded_ids)
-    notes_downloaded = Notes.query.filter(Notes.id.in_(notes_downloaded_ids)).all()
+    if notes_downloaded_ids:
+        notes_downloaded = Notes.query.filter(Notes.id.in_(notes_downloaded_ids)).all()
+    else:
+        notes_downloaded = []
     books_owned = Books.query.filter_by(user_id=current_user.id).all()
     # print(books_owned)
     return render_template("account.html", notes_uploaded=notes_uploaded, notes_downloaded=notes_downloaded, books_owned=books_owned)

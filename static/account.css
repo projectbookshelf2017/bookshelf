@@ -182,19 +182,29 @@ body{
     text-transform: uppercase;
     
 }
-input[type=text] {
-    width: 382px;
+#search input[type=text] {
+    /*width: 382px;*/
     box-sizing: border-box;
     border: 2px solid black;
     border-radius: 4px;
     font-size: 34px;
     background-color: white;
     background-image: url('s.png');
-    background-position: 10px 10px; 
+    background-position: 10px 10px;
     background-repeat: no-repeat;
-    background-position: center;
-    position: relative;
+    background-position: right;
+    /*position: relative;
     left: 490px;
-    bottom: 490px;
+    bottom: 490px;*/
+    width: 50%;
+    margin: 0 0 0 -25%;
+    position: fixed;
+    top: 10px;
+    left:50%;
+}
+
+#header a{
+    text-decoration: none;
+    color: white;
 }
 

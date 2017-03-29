@@ -253,7 +253,6 @@ Sweet Alert
 
 A nice alert box: http://t4t5.github.io/sweetalert/
 
-
 Extras:
 =======
 
