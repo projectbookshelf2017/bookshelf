@@ -4,7 +4,8 @@ dropbox==7.2.0
 Flask==0.12
 Flask-Admin==1.4.2
 Flask-Dropbox==0.3
-Flask-Login==0.4.0
+# Flask-Login==0.4.0
+git+git://github.com/maxcountryman/flask-login.git
 Flask-SQLAlchemy==2.1
 itsdangerous==0.24
 Jinja2==2.9.5
