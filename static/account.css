@@ -202,9 +202,21 @@ body{
     top: 10px;
     left:50%;
 }
-
 #header a{
     text-decoration: none;
     color: white;
+}
+
+h1 {
+    color: white;
+    font-family: Agenda-Light, Agenda Light, Agenda, Arial Narrow, sans-serif;
+}
+
+.c2{
+   color: white;
+    font-family: Agenda-Light, Agenda Light, Agenda, Arial Narrow, sans-serif;
+    text-align: center;
+    font-size: 28px;
+    padding: 10px;
 }
 

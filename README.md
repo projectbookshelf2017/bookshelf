@@ -180,7 +180,7 @@ Project GMail
 emailid: projectbookshelf2017@gmail.com
 password: G680y7%4
 
-Paytm/godaddy account
+Paytm/godaddy account/Heroku
 =============
 
 emailid: projectbookshelf2017@gmail.com
