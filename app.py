@@ -219,12 +219,12 @@ def account():
                                 note_results=json.dumps(note_names)))
 
     notes_uploaded = Notes.query.filter_by(user_id=current_user.id).all()
-    print(notes_uploaded)
+    # print(notes_uploaded)
     notes_downloaded_ids = current_user.notes_bought
-    print(notes_downloaded_ids)
+    # print(notes_downloaded_ids)
     notes_downloaded = Notes.query.filter(Notes.id.in_(notes_downloaded_ids)).all()
     books_owned = Books.query.filter_by(user_id=current_user.id).all()
-    print(books_owned)
+    # print(books_owned)
     return render_template("account.html", notes_uploaded=notes_uploaded, notes_downloaded=notes_downloaded, books_owned=books_owned)
 
 @app.route("/results", methods=['GET', 'POST'])
