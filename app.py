@@ -146,8 +146,6 @@ def home():
         else:
             flash("Unauthorized User. Please Signup")
             # return redirect("/")
-    flash("Hi user")
-    print("Hi user")
     return render_template("home1.html")
 
 
@@ -164,8 +162,11 @@ def signup():
         department = form["dpt"]
         email = form["email"]
         password = form["pwd1"]
-        # conpassword = form["pwd2"]    # prevalidated in front-end
+        conpassword = form["pwd2"]    # prevalidated in front-end
 
+        if password != conpassword:
+            flash("Passwords mismatch", 'error')
+            return render_template("signup.html")
 
         # Add new user info to DB
         new_user = Users(name=name, email=email, department=department, password=password)    # create a Users table record (row)

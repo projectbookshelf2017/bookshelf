@@ -3,7 +3,8 @@
         <title> home page </title>
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="home.css") }}>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script type="text/javascript" src={{ url_for('static', filename="notify.min.js") }} />
+        <script type="text/javascript" src="{{ url_for('static', filename='sweetalert.min.js') }}"></script>
+        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="sweetalert.css") }} />
         <script>
         var vid = document.getElementById("bgvid");
         var pauseButton = document.querySelector("#polina button");
@@ -44,6 +45,16 @@
 
     </head>
     <body>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <script>
+              var messages = {{ messages | safe }};
+              for (var i=0; i<messages.length; i++) {
+                swal(messages[i]);
+              }
+            </script>
+          {% endif %}
+        {% endwith %}
         <video poster="bg.jpg" id="bgvid" playsinline autoplay muted loop>
           <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
         <!-- <source src="http://thenewcode.com/assets/videos/polina.webm" type="video/webm"> -->

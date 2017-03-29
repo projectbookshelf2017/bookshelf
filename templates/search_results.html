@@ -2,7 +2,11 @@
     <head>
         <title>user profile</title>
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='search_results.css') }} />
+        <script type="text/javascript" src="{{ url_for('static', filename='sweetalert.min.js') }}"></script>
+        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="sweetalert.css") }} />
+        <!--<link rel="stylesheet" type="text/css" href={{ url_for('static', filename='foundation.min.css') }} />-->
         <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
+        <!--<script type="text/javascript" src="{{ url_for('static', filename='foundation.min.js') }}"></script>-->
         <script>
             document.getElementById("uploadBtn").onchange = function () {
             document.getElementById("uploadFile").value = this.value;
@@ -51,7 +55,16 @@
         </script>
     </head>
     <body>
-        
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <script>
+              var messages = {{ messages | safe }};
+              for (var i=0; i<messages.length; i++) {
+                swal(messages[i]);
+              }
+            </script>
+          {% endif %}
+        {% endwith %}
         <div id="header">
                 <h2> <a href={{ url_for('profile') }}>  BUKSHELF </a> </h2>
            

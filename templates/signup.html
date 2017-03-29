@@ -3,28 +3,22 @@
     <head>
        <title>signup</title>
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="signup.css") }} />
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script type="text/javascript">
-         $(document).ready(function() {
-            //write your scripts here
-             $(document).on("submit", "#signup", function(e) {
-                    var password = document.getElementById("pwd1").value;
-                    var confirmPassword = document.getElementById("pwd2").value;
-                    if (password != confirmPassword) {
-                        alert("Passwords do not match.");
-                        e.preventDefault(e);
-                    } else {
-                        alert("Registered Successfully");
-                    }
-
-                });
-         });
-
-        </script>
+        <script type="text/javascript" src="{{ url_for('static', filename='sweetalert.min.js') }}"></script>
+        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="sweetalert.css") }} />
     </head>
 
 
     <body>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <script>
+              var messages = {{ messages | safe }};
+              for (var i=0; i<messages.length; i++) {
+                swal(messages[i]);
+              }
+            </script>
+          {% endif %}
+        {% endwith %}
         <div id="header">
                 <h2>  BUKSHELF  </h2>
 

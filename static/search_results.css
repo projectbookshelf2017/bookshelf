@@ -196,7 +196,7 @@ input[type=text] {
     background-position: center;
     position: relative;
     left: 490px;
-    bottom: 200px;
+    bottom: 182px;
 }
 
 .table {
@@ -208,7 +208,8 @@ input[type=text] {
    color: white;
     font-family: Agenda-Light, Agenda Light, Agenda, Arial Narrow, sans-serif;
     text-align: center;
-    font-size: 20px;
+    font-size: 28px;
+    padding: 10px;
 }
 #header a{
     text-decoration: none;

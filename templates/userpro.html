@@ -2,6 +2,8 @@
     <head>
     <title> userprofile </title>
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="userpro.css") }}>
+        <script type="text/javascript" src="{{ url_for('static', filename='sweetalert.min.js') }}"></script>
+        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="sweetalert.css") }} />
         <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
         <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,700,800' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Raleway:400,700,300,200,100,900' rel='stylesheet' type='text/css'>
@@ -10,6 +12,16 @@
     
     
     <body>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <script>
+              var messages = {{ messages | safe }};
+              for (var i=0; i<messages.length; i++) {
+                swal(messages[i]);
+              }
+            </script>
+          {% endif %}
+        {% endwith %}
         <div id="header">
                 <h2>  BUKSHELF  </h2>
            
