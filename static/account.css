@@ -207,7 +207,7 @@ body{
     color: white;
 }
 
-h1 {
+.c1 h1 {
     color: white;
     font-family: Agenda-Light, Agenda Light, Agenda, Arial Narrow, sans-serif;
 }
@@ -216,7 +216,7 @@ h1 {
    color: white;
     font-family: Agenda-Light, Agenda Light, Agenda, Arial Narrow, sans-serif;
     text-align: center;
-    font-size: 28px;
+
     padding: 10px;
 }
 

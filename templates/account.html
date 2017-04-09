@@ -31,25 +31,33 @@
                 <h2>  <a href={{ url_for('profile') }}> BUKSHELF </a> </h2>
            
         </div>
-        <h1>Downloaded</h1>
-        {% for item in notes_downloaded %}
-        <TR>
-           <TD class="c2">{{item.title}}</TD>
-        </TR>
-        {% endfor %}
-        <h1>Uploaded</h1>
-        {% for item in notes_uploaded %}
-        <TR>
-           <TD class="c2">{{item.title}}</TD>
-        </TR>
-        {% endfor %}
-        <h1>Books owned</h1>
-        {% for item in books_owned %}
-        <TR>
-           <TD class="c2">{{item.book_name}}</TD>
-        </TR>
-        {% endfor %}
-        <div id="search">
+        <table>
+            <TR>
+                <TH class="c1"> <h1>Downloaded</h1> </TH>
+            </TR>
+            {% for item in notes_downloaded %}
+            <TR>
+                <TD class="c2">{{item.title}}</TD>
+            </TR>
+            {% endfor %}
+            <TR>
+                <TH class="c1"> <h1>Uploaded</h1> </TH>
+            </TR>
+            {% for item in notes_uploaded %}
+            <TR>
+                <TD class="c2">{{item.title}}</TD>
+            </TR>
+            {% endfor %}
+            <TR>
+                <TH class="c1"> <h1>Books owned</h1> </TH>
+            </TR>
+            {% for item in books_owned %}
+            <TR>
+                <TD class="c2">{{item.book_name}}</TD>
+            </TR>
+            {% endfor %}
+        </table>
+            <div id="search">
                         
             <form method="POST">
                 <input type="text" name="search" placeholder="Search..">
