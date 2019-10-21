@@ -18,7 +18,7 @@ six==1.10.0
 SQLAlchemy==1.1.5
 typing==3.5.3.0
 urllib3==1.20
-Werkzeug==0.11.15
+Werkzeug==0.15.3
 WTForms==2.1
 gunicorn==19.6.0
 # flask_whooshalchemy==0.8  # leads to deprecation warning
